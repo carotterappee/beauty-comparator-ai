@@ -1,32 +1,44 @@
 "use client";
 
+import { useEffect, useState, useMemo } from "react";
 import ProductCard from "@/components/ProductCard";
 import FilterPills from "@/components/FilterPills";
-import { useMemo, useState } from "react";
-import { PRODUCTS as MOCK_PRODUCTS } from "@/lib/products.mock";
+import { supabase } from "@/lib/supabaseClient";
 
 export default function Products() {
-
+  // produits qui viennent de Supabase
+  const [products, setProducts] = useState<any[]>([]);
+  // filtres
   const [filters, setFilters] = useState<string[]>([]);
+
+  useEffect(() => {
+    const load = async () => {
+      const { data, error } = await supabase.from("products").select("*");
+      if (!error && data) setProducts(data);
+    };
+    load();
+  }, []);
+
   const toggle = (k: string) =>
-  setFilters((f) => (f.includes(k) ? f.filter((x) => x !== k) : [...f, k]));
+    setFilters((f) => (f.includes(k) ? f.filter((x) => x !== k) : [...f, k]));
 
   const filtered = useMemo(() => {
-    return MOCK_PRODUCTS.filter((p) => {
+    return products.filter((p) => {
       const tagsOk = !filters.length || (p.tags || []).some((t) => filters.includes(t));
       return tagsOk;
     });
-  }, [filters]);
+  }, [products, filters]);
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
       <h1 className="mb-6 text-3xl font-bold text-purple-600">Nos Produits</h1>
 
-      {/* 👇 affichage des filtres */}
+      {/* filtres */}
       <div className="mb-6">
         <FilterPills active={filters} toggle={toggle} />
       </div>
 
+      {/* affichage des produits */}
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((p) => (
           <ProductCard key={p.id} product={p} />
