@@ -24,7 +24,7 @@ export default function Products() {
 
   const filtered = useMemo(() => {
     return products.filter((p) => {
-      const tagsOk = !filters.length || (p.tags || []).some((t) => filters.includes(t));
+      const tagsOk = !filters.length || (p.tags || []).some((t: string) => filters.includes(t));
       return tagsOk;
     });
   }, [products, filters]);
