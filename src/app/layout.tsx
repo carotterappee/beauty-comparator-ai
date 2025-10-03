@@ -6,7 +6,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Beauty Comparator AI",
-  description: "Comparateur intelligent de produits beauté",
+  description: "Comparateur intelligent de produits beauté (peau, cheveux).",
+  themeColor: "#ec4899",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
