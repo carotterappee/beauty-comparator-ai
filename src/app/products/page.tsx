@@ -33,6 +33,11 @@ export default function Products() {
     <div className="mx-auto max-w-6xl px-4 py-10">
       <h1 className="mb-6 text-3xl font-bold text-purple-600">Nos Produits</h1>
 
+  {/* compteur produits */}
+    <p className="mt-2 text-sm text-gray-500">
+      reçus: {products.length} • affichés: {filtered.length}
+    </p>
+
       {/* filtres */}
       <div className="mb-6">
         <FilterPills active={filters} toggle={toggle} />

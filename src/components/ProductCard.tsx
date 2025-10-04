@@ -1,3 +1,5 @@
+import ReviewList from "./ReviewList";
+
 type Product = {
   id: string;
   name: string;
@@ -71,6 +73,7 @@ export default function ProductCard({ product }: { product: Product }) {
           </button>
         )}
       </div>
+      {product?.id && <ReviewList productId={product.id} />}
     </article>
   );
 }
