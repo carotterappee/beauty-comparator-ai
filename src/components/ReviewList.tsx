@@ -11,7 +11,7 @@ export default function ReviewList({ productId }: { productId: string }) {
   const load = async () => {
     setLoading(true);
     try {
-      const res = await fetch(`/api/reviews?productId=${productId}`, { cache: "no-store" });
+  const res = await fetch(`/api/reviews?productId=${productId}&hideDev=true`, { cache: "no-store" });
       const data = await res.json();
       setReviews(data.reviews ?? []);
     } finally {
