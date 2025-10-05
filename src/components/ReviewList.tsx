@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import ReviewForm from "./ReviewForm";
+
 
 export default function ReviewList({ productId }: { productId: string }) {
   const [reviews, setReviews] = useState<any[]>([]);
@@ -50,6 +52,7 @@ export default function ReviewList({ productId }: { productId: string }) {
                 <p className="text-xs text-gray-400">{new Date(r.created_at).toLocaleDateString()}</p>
               </div>
             ))}
+            <ReviewForm productId={productId} onCreated={load} />
         </div>
       )}
     </div>

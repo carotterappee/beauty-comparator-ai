@@ -26,14 +26,24 @@ export default function ProductCard({ product }: { product: Product }) {
         />
       </div>
 
-      <div className="mt-4 space-y-1">
-        <h3 className="text-sm uppercase tracking-wide text-gray-500">{brand}</h3>
-        <h2 className="text-lg font-semibold text-gray-900">{name}</h2>
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          {typeof rating === "number" && <span>★ {rating.toFixed(1)}/5</span>}
-          {price && <span>• {price}</span>}
-        </div>
-      </div>
+     <div className="mt-4 space-y-1">
+  <h3 className="text-sm uppercase tracking-wide text-gray-500">{brand}</h3>
+  <h2 className="text-lg font-semibold text-gray-900">{name}</h2>
+  <div className="flex items-center gap-2 text-sm text-gray-600">
+    {typeof rating === "number" && <span>★ {rating.toFixed(1)}/5</span>}
+    {price && <span>• {price}</span>}
+    {typeof (product as any).avgRating === "number" && (
+      <span className="text-gray-500">
+        • Moyenne {(product as any).avgRating.toFixed(2)}⭐
+      </span>
+    )}
+    {typeof (product as any).reviewsCount === "number" && (
+      <span className="text-gray-500">
+        • {(product as any).reviewsCount} avis
+      </span>
+    )}
+  </div>
+</div>
 
       <div className="mt-4 grid gap-3 md:grid-cols-2">
         <div className="rounded-xl border bg-green-50 p-3">

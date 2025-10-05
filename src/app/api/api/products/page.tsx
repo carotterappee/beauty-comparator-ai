@@ -3,21 +3,39 @@
 import { useEffect, useState, useMemo } from "react";
 import ProductCard from "@/components/ProductCard";
 import FilterPills from "@/components/FilterPills";
-import { supabase } from "@/lib/supabaseClient";
 
 export default function Products() {
   // produits qui viennent de Supabase
   const [products, setProducts] = useState<any[]>([]);
   // filtres
   const [filters, setFilters] = useState<string[]>([]);
+  const [offset, setOffset] = useState(0);
+const [hasMore, setHasMore] = useState(true);
+const LIMIT = 9; // 6 ou 12 si tu préfères
+
 
   useEffect(() => {
-    const load = async () => {
-      const { data, error } = await supabase.from("products").select("*");
-      if (!error && data) setProducts(data);
-    };
-    load();
-  }, []);
+  loadMore(true); // 1er chargement
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
+
+async function loadMore(reset = false) {
+  const nextOffset = reset ? 0 : offset;
+  const res = await fetch(
+    `/api/products?limit=${LIMIT}&offset=${nextOffset}&order=created_at.desc`,
+    { cache: "no-store" }
+  );
+  const json = await res.json();
+  const list = json.products ?? json; // compat
+  if (reset) {
+    setProducts(list);
+    setOffset(LIMIT);
+  } else {
+    setProducts(prev => [...prev, ...list]);
+    setOffset(nextOffset + LIMIT);
+  }
+  setHasMore(list.length === LIMIT);
+}
 
   const toggle = (k: string) =>
     setFilters((f) => (f.includes(k) ? f.filter((x) => x !== k) : [...f, k]));
@@ -49,6 +67,16 @@ export default function Products() {
           <ProductCard key={p.id} product={p} />
         ))}
       </div>
+      {hasMore && (
+  <div className="mt-8 text-center">
+    <button
+      onClick={() => loadMore(false)}
+      className="rounded-md bg-purple-600 px-4 py-2 text-white hover:bg-purple-700"
+    >
+      Charger plus
+    </button>
+  </div>
+)}
     </div>
   );
 }
