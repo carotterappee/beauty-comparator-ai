@@ -15,15 +15,16 @@ export async function GET(req: Request) {
     .range(offset, offset + limit - 1);
 
   if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+
   const ids = (data ?? []).map((p: any) => p.id);
   let enriched = data ?? [];
   if (ids.length > 0) {
-    const { data: stats, error: e2 } = await supabase
+    const { data: stats } = await supabase
       .from("product_stats")
       .select("*")
       .in("product_id", ids);
 
-    if (!e2 && stats) {
+    if (stats) {
       const byId = new Map(stats.map((s: any) => [s.product_id, s]));
       enriched = enriched.map((p: any) => ({
         ...p,
@@ -32,5 +33,6 @@ export async function GET(req: Request) {
       }));
     }
   }
-  return NextResponse.json({ products: data, count, limit, offset });
+
+  return NextResponse.json({ products: enriched, count, limit, offset });
 }
