@@ -71,7 +71,7 @@ export default function ProductCard({ product }: { product: Product }) {
       <div className="mt-4 flex justify-end">
         {buyUrl ? (
           <a
-            href={buyUrl}
+            href={`/api/click?productId=${product.id}&to=${encodeURIComponent(buyUrl as string)}`}
             target="_blank"
             rel="noreferrer"
             className="rounded-xl bg-pink-600 px-4 py-2 text-white transition hover:bg-pink-700"
