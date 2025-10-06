@@ -4,7 +4,29 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// 🧠 Bloc SEO + OpenGraph + Twitter
 export const metadata = {
+  title: "Beauty Comparator AI - Comparateur de produits beauté",
+  description:
+    "Avis, comparatifs, tendances TikTok/YouTube et recommandations personnalisées.",
+  themeColor: "#ec4899",
+  openGraph: {
+    title: "Beauty Comparator AI",
+    description:
+      "Avis, comparatifs, tendances TikTok/YouTube et recommandations personnalisées.",
+    url: "https://<ton-domaine-vercel>", // à remplacer par ton vrai domaine
+    siteName: "Beauty Comparator AI",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Beauty Comparator AI",
+    description:
+      "Avis, comparatifs, tendances TikTok/YouTube et recommandations personnalisées.",
+  },
+};
+
+export const viewport = {
   title: "Beauty Comparator AI",
   description: "Comparateur intelligent de produits beauté (peau, cheveux).",
   themeColor: "#ec4899",
