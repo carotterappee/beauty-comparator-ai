@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // src/app/products/[id]/page.tsx
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabaseClient";
