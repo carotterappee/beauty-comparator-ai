@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 
 // 🧠 2️⃣  — bloc SEO (à placer ici, avant `export default function Home`)
