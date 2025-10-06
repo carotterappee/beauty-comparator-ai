@@ -1,4 +1,4 @@
-import ReviewList from "./ReviewList";
+import Link from "next/link";
 
 type Product = {
   id: string;
@@ -13,37 +13,41 @@ type Product = {
 };
 
 export default function ProductCard({ product }: { product: Product }) {
-  const { name, brand, image, price, rating, highlights, drawbacks, buyUrl } = product;
+  const { id, name, brand, image, price, rating, highlights, drawbacks, buyUrl } = product;
 
   return (
     <article className="group rounded-2xl border bg-white p-4 shadow-sm transition hover:shadow-md">
-      <div className="aspect-square overflow-hidden rounded-xl bg-gray-100">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={image}
-          alt={name}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
-        />
-      </div>
+      {/* lien cliquable vers la page du produit */}
+      <Link href={`/products/${id}`} className="block">
+        <div className="aspect-square overflow-hidden rounded-xl bg-gray-100">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src={image}
+            alt={name}
+            className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+          />
+        </div>
+      </Link>
 
-     <div className="mt-4 space-y-1">
-  <h3 className="text-sm uppercase tracking-wide text-gray-500">{brand}</h3>
-  <h2 className="text-lg font-semibold text-gray-900">{name}</h2>
-  <div className="flex items-center gap-2 text-sm text-gray-600">
-    {typeof rating === "number" && <span>★ {rating.toFixed(1)}/5</span>}
-    {price && <span>• {price}</span>}
-    {typeof (product as any).avgRating === "number" && (
-      <span className="text-gray-500">
-        • Moyenne {(product as any).avgRating.toFixed(2)}⭐
-      </span>
-    )}
-    {typeof (product as any).reviewsCount === "number" && (
-      <span className="text-gray-500">
-        • {(product as any).reviewsCount} avis
-      </span>
-    )}
-  </div>
-</div>
+      <div className="mt-4 space-y-1">
+        <h3 className="text-sm uppercase tracking-wide text-gray-500">{brand}</h3>
+
+        {/* titre cliquable aussi */}
+        <Link href={`/products/${id}`} className="inline-block">
+          <h2 className="text-lg font-semibold text-gray-900">{name}</h2>
+        </Link>
+
+        <div className="flex items-center gap-2 text-sm text-gray-600">
+          {typeof rating === "number" && <span>★ {rating.toFixed(1)}/5</span>}
+          {price && <span>• {price}</span>}
+          {typeof (product as any).avgRating === "number" && (
+            <span className="text-gray-500">• Moyenne {(product as any).avgRating.toFixed(2)}⭐</span>
+          )}
+          {typeof (product as any).reviewsCount === "number" && (
+            <span className="text-gray-500">• {(product as any).reviewsCount} avis</span>
+          )}
+        </div>
+      </div>
 
       <div className="mt-4 grid gap-3 md:grid-cols-2">
         <div className="rounded-xl border bg-green-50 p-3">
@@ -83,7 +87,6 @@ export default function ProductCard({ product }: { product: Product }) {
           </button>
         )}
       </div>
-      {product?.id && <ReviewList productId={product.id} />}
     </article>
   );
 }
