@@ -26,6 +26,18 @@ export default async function ProductDetail(props: any) {
     .select("*")
     .eq("product_id", id)
     .single();
+    // clics (optionnel)
+const { data: c24 } = await supabase
+  .from("product_clicks_24h")
+  .select("*")
+  .eq("product_id", id)
+  .single();
+
+const { data: cTot } = await supabase
+  .from("product_clicks_total")
+  .select("*")
+  .eq("product_id", id)
+  .single();
 
   // 3) avis
   const { data: reviews } = await supabase
@@ -62,6 +74,10 @@ export default async function ProductDetail(props: any) {
             )}
           </div>
 
+          {typeof c24?.clicks_24h === "number" && <span>• {c24.clicks_24h} clics/24h</span>}
+          {typeof cTot?.clicks_total === "number" && <span>• {cTot.clicks_total} clics au total</span>}
+
+
           <div className="mt-4 grid gap-3 sm:grid-cols-2">
             <div className="rounded-xl border bg-green-50 p-3">
               <p className="mb-1 text-xs font-semibold text-green-700">Points forts</p>
@@ -82,15 +98,15 @@ export default async function ProductDetail(props: any) {
           </div>
 
           {product.buyUrl ? (
-            <a
-              href={product.buyUrl}
-              target="_blank"
-              rel="noreferrer"
-              className="mt-4 inline-block rounded-xl bg-pink-600 px-4 py-2 text-white hover:bg-pink-700"
-            >
-              Voir l’offre
-            </a>
-          ) : null}
+  <a
+    href={`/api/click?productId=${product.id}&to=${encodeURIComponent(product.buyUrl)}`}
+    target="_blank"
+    rel="noreferrer nofollow"
+    className="mt-4 inline-block rounded-xl bg-pink-600 px-4 py-2 text-white hover:bg-pink-700"
+  >
+    Voir l’offre
+  </a>
+) : null}
         </div>
       </section>
 
