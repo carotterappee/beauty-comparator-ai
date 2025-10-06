@@ -16,7 +16,6 @@ export async function GET(req: Request) {
     (req as any).ip ||
     "";
 
-  // log best-effort (on ignore l'erreur volontairement)
   await supabase.from("clicks").insert({
     product_id: productId,
     destination: to,
