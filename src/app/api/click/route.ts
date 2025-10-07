@@ -16,6 +16,19 @@ export async function GET(req: Request) {
     (req as any).ip ||
     "";
 
+    // dedupe simple: si même IP a cliqué ce produit il y a < 2 min, on loggue pas
+const recent = await supabase
+  .from("clicks")
+  .select("id", { count: "exact", head: true })
+  .eq("product_id", productId)
+  .gte("created_at", new Date(Date.now() - 2 * 60 * 1000).toISOString())
+  .eq("ip", (req.headers.get("x-forwarded-for") ?? "unknown").toString());
+
+if (!recent.error && (recent.count ?? 0) > 0) {
+  return NextResponse.redirect(to); // redirige sans ré-insérer
+}
+
+
   await supabase.from("clicks").insert({
     product_id: productId,
     destination: to,

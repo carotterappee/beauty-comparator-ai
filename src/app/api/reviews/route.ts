@@ -1,10 +1,8 @@
 import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseClient";
+import { supabaseAdmin } from "@/lib/supabaseAdmin"; // Service Role = écritures côté serveur
 
-/**
- * GET /api/reviews?productId=UUID
- * Renvoie la liste des avis pour un produit, triés du plus récent au plus ancien.
- */
+/** GET /api/reviews?productId=UUID */
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const productId = searchParams.get("productId");
@@ -13,30 +11,18 @@ export async function GET(req: Request) {
     return NextResponse.json({ error: "productId is required" }, { status: 400 });
   }
 
+  // LECTURE = client public (anon)
   const { data, error } = await supabase
     .from("reviews")
     .select("*")
     .eq("product_id", productId)
     .order("created_at", { ascending: false });
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ reviews: data ?? [] });
 }
 
-/**
- * POST /api/reviews
- * Body:
- * {
- *   "productId": "uuid",          // requis
- *   "author": "string|null",      // optionnel
- *   "rating": number 0..5|null,   // optionnel
- *   "body": "string",             // requis
- *   "source": "tiktok|youtube|..."// optionnel
- * }
- */
+/** POST /api/reviews */
 export async function POST(req: Request) {
   let payload: any;
   try {
@@ -47,38 +33,31 @@ export async function POST(req: Request) {
 
   const { productId, author, rating, body: text, source } = payload ?? {};
 
-  // Vérifs de base
+  // Vérifs
   if (!productId || typeof text !== "string" || text.trim().length === 0) {
     return NextResponse.json(
       { error: "productId et 'body' (texte) sont requis." },
       { status: 400 }
     );
   }
-
-  // Anti-spam / qualité
   if (text.trim().length < 10) {
     return NextResponse.json(
       { error: "Le texte de l’avis est trop court (minimum 10 caractères)." },
       { status: 400 }
     );
   }
-
   if (rating != null) {
     const n = Number(rating);
     if (Number.isNaN(n) || n < 0 || n > 5) {
-      return NextResponse.json(
-        { error: "La note doit être comprise entre 0 et 5." },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: "La note doit être entre 0 et 5." }, { status: 400 });
     }
   }
-
   if (source && !["tiktok", "youtube", "sephora", "instagram", "autre"].includes(String(source).toLowerCase())) {
     return NextResponse.json({ error: "Source invalide." }, { status: 400 });
   }
 
-  // Insertion
-  const { data, error } = await supabase
+  // ÉCRITURE = client server-only (Service Role)
+  const { data, error } = await supabaseAdmin
     .from("reviews")
     .insert({
       product_id: productId,
@@ -90,9 +69,6 @@ export async function POST(req: Request) {
     .select()
     .single();
 
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-
+  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
   return NextResponse.json({ review: data }, { status: 201 });
 }
