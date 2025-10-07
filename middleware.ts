@@ -1,39 +1,43 @@
-import { NextResponse, NextRequest } from "next/server";
+// middleware.ts (à la RACINE du projet)
+import { NextResponse } from "next/server";
 
 export const config = {
-  matcher: ["/admin", "/admin/:path*", "/api/admin/:path*"],
+  matcher: ["/admin/:path*"], // protège /admin et ses sous-routes
 };
 
-export function middleware(req: NextRequest) {
-  const USER = process.env.ADMIN_USER || "admin";
-  const PASS = process.env.ADMIN_PASS || "Family1962-2007";
-
-  // option logout pour forcer la déconnexion
-  const url = new URL(req.url);
-  if (url.searchParams.get("logout") === "1") {
-    return new NextResponse("Déconnexion effectuée", {
-      status: 401,
-      headers: {
-        "Cache-Control": "no-store",
-        "WWW-Authenticate": `Basic realm="Logout-${Date.now()}"`,
-      },
-    });
-  }
+export default function middleware(req: Request) {
+  const username = process.env.BASIC_AUTH_USER || "admin";
+  const password = process.env.BASIC_AUTH_PASS || "Family1962-2007"; // fallback pour local
 
   const auth = req.headers.get("authorization");
-  if (auth?.startsWith("Basic ")) {
-    try {
-      // atob est dispo dans l'Edge Runtime
-      const [user, pass] = atob(auth.split(" ")[1] || "").split(":");
-      if (user === USER && pass === PASS) return NextResponse.next();
-    } catch {}
+  const challenge = new Headers({
+    "WWW-Authenticate": 'Basic realm="Admin", charset="UTF-8"',
+  });
+
+  if (!auth) {
+    return new Response("Auth required", { status: 401, headers: challenge });
   }
 
-  return new NextResponse("Authentification requise", {
-    status: 401,
-    headers: {
-      "Cache-Control": "no-store",
-      "WWW-Authenticate": 'Basic realm="Espace Admin"',
-    },
-  });
+  const [scheme, encoded] = auth.split(" ");
+  if (scheme !== "Basic" || !encoded) {
+    return new Response("Invalid auth", { status: 401, headers: challenge });
+  }
+
+  // Edge runtime: atob est dispo
+  let decoded = "";
+  try {
+    decoded = atob(encoded);
+  } catch {
+    return new Response("Bad base64", { status: 401, headers: challenge });
+  }
+
+  const [user, pass] = decoded.split(":");
+  if (user !== username || pass !== password) {
+    return new Response("Unauthorized", { status: 401, headers: challenge });
+  }
+
+  // Petit header de preuve que le middleware a tourné
+  const res = NextResponse.next();
+  res.headers.set("x-admin-protected", "1");
+  return res;
 }
