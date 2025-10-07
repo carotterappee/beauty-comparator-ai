@@ -1,6 +1,9 @@
 "use client";
+export const revalidate = 0;
+export const dynamic = "force-dynamic";
 
 import { useEffect, useState } from "react";
+
 
 /* =======================
    Bloc dashboard de stats
