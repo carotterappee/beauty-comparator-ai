@@ -42,29 +42,18 @@ export const viewport = {
   themeColor: "#ec4899",
 };
 
+// ajoute cet import :
+import VelvetHeader from "@/components/VelvetHeader";
 
+// …et plus bas :
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <body className={`${inter.variable} ${playfair.variable} ${marcellus.variable}`}>
-        <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
-          <div className="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
-            <Link
-  href="/"
-  className="text-pink-600"
-  style={{ fontFamily: "var(--font-playfair)", fontWeight: 700, letterSpacing: ".5px" }}
->
-  VELVETMIND
-</Link>
-
-            <nav className="flex items-center gap-6 text-sm">
-              <Link href="/" className="hover:underline">Accueil</Link>
-              <Link href="/products" className="hover:underline">Produits</Link>
-            </nav>
-          </div>
-        </header>
+        <VelvetHeader />
         <main>{children}</main>
       </body>
     </html>
   );
 }
+
