@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 
 export default function Home() {
@@ -9,24 +10,22 @@ export default function Home() {
         Comparateur intelligent de produits beauté ✨
       </p>
 
-      {/* 3️⃣ — bouton vers /products (juste après le paragraphe) */}
       <div className="mt-8">
         <Link
           href="/products"
-          className="rounded-xl bg-pink-600 px-5 py-3 text-white hover:bg-pink-700"
+          className="rounded-xl bg-pink-600 px-5 py-3 text-white hover:bg-pink-700 transition"
         >
           Voir les produits
         </Link>
       </div>
 
-      {/* 🌸 Option bonus : champ de recherche */}
       <form
         onSubmit={(e) => {
           e.preventDefault();
           const q = (e.currentTarget.elements.namedItem("q") as HTMLInputElement).value.trim();
-          if (q)
-            window.location.href = `/products?q=${encodeURIComponent(q)}`;
-          else window.location.href = "/products";
+          window.location.href = q
+            ? `/products?q=${encodeURIComponent(q)}`
+            : "/products";
         }}
         className="mt-6 flex w-full max-w-md gap-2"
       >
