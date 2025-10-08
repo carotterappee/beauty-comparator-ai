@@ -1,46 +1,94 @@
 "use client";
 
 import Link from "next/link";
+import CategoryCard from "@/components/CategoryCard";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-white">
-      <h1 className="text-4xl font-bold text-pink-600">Beauty Comparator AI</h1>
-      <p className="mt-4 text-gray-700">
-        Comparateur intelligent de produits beauté ✨
-      </p>
-
-      <div className="mt-8">
-        <Link
-          href="/products"
-          className="rounded-xl bg-pink-600 px-5 py-3 text-white hover:bg-pink-700 transition"
-        >
-          Voir les produits
-        </Link>
+    <main className="relative min-h-[90vh] bg-[#fdf8f9]">
+      {/* --- arrière-plan soyeux --- */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10"
+      >
+        <div className="absolute left-1/2 top-16 h-64 w-64 -translate-x-1/2 rounded-full bg-gradient-to-br from-pink-300/40 to-violet-300/40 blur-3xl animate-glow" />
       </div>
 
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          const q = (e.currentTarget.elements.namedItem("q") as HTMLInputElement).value.trim();
-          window.location.href = q
-            ? `/products?q=${encodeURIComponent(q)}`
-            : "/products";
-        }}
-        className="mt-6 flex w-full max-w-md gap-2"
-      >
-        <input
-          name="q"
-          placeholder="Rechercher un produit…"
-          className="flex-1 rounded border px-3 py-2"
-        />
-        <button
-          type="submit"
-          className="rounded bg-purple-600 px-4 py-2 text-white hover:bg-purple-700"
+      {/* --- HERO --- */}
+      <section className="mx-auto max-w-5xl px-4 pb-10 pt-16 md:pt-20">
+        <h1
+          className="text-5xl md:text-6xl text-gray-900 tracking-tight animate-in"
+          style={{ fontFamily: "var(--font-playfair)" }}
         >
-          Rechercher
-        </button>
-      </form>
+          VELVETMIND
+        </h1>
+        <p
+          className="mt-2 text-lg md:text-xl text-gray-700 animate-in"
+          style={{ animationDelay: "80ms" } as any}
+        >
+          Beauty meets intelligence.
+        </p>
+
+        <div className="mt-6 flex items-center gap-3 animate-in" style={{ animationDelay: "120ms" } as any}>
+          <Link
+            href="/products"
+            className="rounded-full bg-pink-600 px-5 py-2.5 text-white shadow-lg shadow-pink-600/20 transition hover:bg-pink-700"
+          >
+            Explorer les produits
+          </Link>
+
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              const q = (e.currentTarget.elements.namedItem("q") as HTMLInputElement)?.value?.trim();
+              window.location.href = q ? `/products?q=${encodeURIComponent(q)}` : "/products";
+            }}
+            className="hidden sm:flex items-center gap-2"
+          >
+            <input
+              name="q"
+              placeholder="Rechercher un soin, une marque…"
+              className="w-64 rounded-full border px-4 py-2 bg-white/80 focus:outline-none focus:ring-2 focus:ring-pink-300"
+            />
+            <button
+              type="submit"
+              className="rounded-full border px-4 py-2 text-gray-700 hover:bg-white"
+            >
+              Rechercher
+            </button>
+          </form>
+        </div>
+      </section>
+
+      {/* --- CATEGORIES --- */}
+      <section className="mx-auto max-w-5xl px-4 pb-16">
+        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          <CategoryCard
+            title="Maquillage"
+            subtitle="Tendances & best-sellers"
+            href="/products?tags=makeup"
+            image="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200&auto=format&fit=crop"
+          />
+          <CategoryCard
+            title="Skincare"
+            subtitle="Peau — routines éclairées"
+            href="/products?tags=skincare"
+            image="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop"
+          />
+          <CategoryCard
+            title="Haircare"
+            subtitle="Boucles, lissage, volume"
+            href="/products?tags=hair"
+            image="https://images.unsplash.com/photo-1596464716121-b43b77f65c4c?q=80&w=1200&auto=format&fit=crop"
+          />
+          <CategoryCard
+            title="Body Care"
+            subtitle="Hydratation & glow"
+            href="/products?tags=body"
+            image="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop#body"
+          />
+        </div>
+      </section>
     </main>
   );
 }

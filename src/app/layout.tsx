@@ -1,46 +1,62 @@
 import Link from "next/link";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Inter, Playfair_Display, Marcellus } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700"],
+});
+const marcellus = Marcellus({
+  subsets: ["latin"],
+  variable: "--font-marcellus",
+  weight: "400",
+});
 
 // 🧠 Bloc SEO + OpenGraph + Twitter
 export const metadata = {
-  title: "Beauty Comparator AI - Comparateur de produits beauté",
+  title: "VELVETMIND — Beauty meets intelligence",
   description:
-    "Avis, comparatifs, tendances TikTok/YouTube et recommandations personnalisées.",
+    "Comparateur intelligent de produits beauté : skincare, haircare, body care & makeup.",
   themeColor: "#ec4899",
   openGraph: {
-    title: "Beauty Comparator AI",
+    title: "VELVETMIND",
     description:
-      "Avis, comparatifs, tendances TikTok/YouTube et recommandations personnalisées.",
-    url: "https://<ton-domaine-vercel>", // à remplacer par ton vrai domaine
-    siteName: "Beauty Comparator AI",
+      "Comparateur intelligent de produits beauté : skincare, haircare, body care & makeup.",
+    url: "https://beauty-comparator-ai.vercel.app", // ← remplace si tu as un domaine custom
+    siteName: "VELVETMIND",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Beauty Comparator AI",
+    title: "VELVETMIND — Beauty meets intelligence",
     description:
-      "Avis, comparatifs, tendances TikTok/YouTube et recommandations personnalisées.",
+      "Comparateur intelligent de produits beauté : skincare, haircare, body care & makeup.",
   },
 };
 
 export const viewport = {
-  title: "Beauty Comparator AI",
-  description: "Comparateur intelligent de produits beauté (peau, cheveux).",
+  width: "device-width",
+  initialScale: 1,
   themeColor: "#ec4899",
 };
+
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${playfair.variable} ${marcellus.variable}`}>
         <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b">
           <div className="mx-auto max-w-5xl px-4 py-3 flex items-center justify-between">
-            <Link href="/" className="font-bold text-pink-600">
-              Beauty Comparator AI
-            </Link>
+            <Link
+  href="/"
+  className="text-pink-600"
+  style={{ fontFamily: "var(--font-playfair)", fontWeight: 700, letterSpacing: ".5px" }}
+>
+  VELVETMIND
+</Link>
+
             <nav className="flex items-center gap-6 text-sm">
               <Link href="/" className="hover:underline">Accueil</Link>
               <Link href="/products" className="hover:underline">Produits</Link>
