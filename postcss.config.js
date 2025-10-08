@@ -1,6 +1,6 @@
-// Tailwind CSS v4+
-export default {
+// Tailwind CSS v4 compatible (CommonJS)
+module.exports = {
   plugins: {
-    "@tailwindcss/postcss": {},
+    '@tailwindcss/postcss': {},
   },
 };
