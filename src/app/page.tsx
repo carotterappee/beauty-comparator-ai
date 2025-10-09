@@ -67,25 +67,25 @@ export default function Home() {
             title="Maquillage"
             subtitle="Tendances & best-sellers"
             href="/products?tags=makeup"
-            image="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=1200&auto=format&fit=crop"
+            image={undefined}
           />
           <CategoryCard
             title="Skincare"
             subtitle="Peau — routines éclairées"
             href="/products?tags=skincare"
-            image="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop"
+            image={undefined}
           />
           <CategoryCard
             title="Haircare"
             subtitle="Boucles, lissage, volume"
             href="/products?tags=hair"
-            image="https://images.unsplash.com/photo-1596464716121-b43b77f65c4c?q=80&w=1200&auto=format&fit=crop"
+            image={undefined}
           />
           <CategoryCard
             title="Body Care"
             subtitle="Hydratation & glow"
             href="/products?tags=body"
-            image="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop#body"
+            image={undefined}
           />
         </div>
       </section>
