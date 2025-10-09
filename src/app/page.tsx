@@ -59,36 +59,6 @@ export default function Home() {
           </form>
         </div>
       </section>
-
-      {/* --- CATEGORIES --- */}
-      <section className="mx-auto max-w-5xl px-4 pb-16">
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          <CategoryCard
-            title="Maquillage"
-            subtitle="Tendances & best-sellers"
-            href="/products?tags=makeup"
-            image={undefined}
-          />
-          <CategoryCard
-            title="Skincare"
-            subtitle="Peau — routines éclairées"
-            href="/products?tags=skincare"
-            image={undefined}
-          />
-          <CategoryCard
-            title="Haircare"
-            subtitle="Boucles, lissage, volume"
-            href="/products?tags=hair"
-            image={undefined}
-          />
-          <CategoryCard
-            title="Body Care"
-            subtitle="Hydratation & glow"
-            href="/products?tags=body"
-            image={undefined}
-          />
-        </div>
-      </section>
     </main>
   );
 }
