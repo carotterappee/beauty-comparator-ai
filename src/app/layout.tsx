@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="fr">
       <body className={`${inter.variable} ${playfair.variable} ${marcellus.variable}`}>
         <VelvetHeader />
-        <main>{children}</main>
+         <main>{children}</main>
       </body>
     </html>
   );
