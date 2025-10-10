@@ -24,7 +24,7 @@ export const metadata = {
     title: "VELVETMIND",
     description:
       "Comparateur intelligent de produits beauté : skincare, haircare, body care & makeup.",
-    url: "https://beauty-comparator-ai.vercel.app", // ← remplace si tu as un domaine custom
+    url: "https://beauty-comparator-ai.vercel.app",
     siteName: "VELVETMIND",
     type: "website",
   },
@@ -42,18 +42,16 @@ export const viewport = {
   themeColor: "#ec4899",
 };
 
-// ajoute cet import :
-import VelvetHeader from "@/components/VelvetHeader";
+// 🎀 En-tête VelvetMind
+import Header from "@/components/Header"; // ← renomme ton ancien VelvetHeader en Header
 
-// …et plus bas :
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
-      <body className={`${inter.variable} ${playfair.variable} ${marcellus.variable}`}>
-        <VelvetHeader />
-         <main>{children}</main>
+    <html lang="fr" className={`${inter.variable} ${playfair.variable} ${marcellus.variable}`}>
+      <body className="bg-[#fdf8f9] text-[#3b2d2b] antialiased font-sans bg-silk">
+        <Header />
+        <main>{children}</main>
       </body>
     </html>
   );
 }
-
