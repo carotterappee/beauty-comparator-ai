@@ -5,29 +5,24 @@ import VMBadgeSVG from "@/components/VMBadgeSVG";
 
 export default function Header() {
   return (
-    <header className="w-full">
-      <div className="relative mx-auto max-w-7xl px-6 py-6">
+    <header className="relative w-full">
 
-        {/* Logo cliquable en haut-gauche */}
-        <div className="absolute left-6 top-0">
-        <Link
-          href="/"
-          aria-label="Accueil"
-          className="absolute top-0 left-0"
-          >
+      {/* === LOGO FIXÉ === */}
+      <div className="fixed left-6 top-6 z-50">
+        <Link href="/" aria-label="Accueil">
           <VMBadgeSVG size={96} className="shrink-0" />
         </Link>
-        </div>
-
-        {/* Wordmark centré (utilise <img> pour éviter le blocage SVG de next/image) */}
-        <div>
-        <img
-          src="/velvetmind/vm-wordmark.svg"  
-          alt="VelvetMind Wordmark"
-          className="block mx-auto mt-[5rem] h-[140px] w-auto select-none"
-        />
-        </div>
       </div>
+
+      {/* === MOT “VelvetMind” CENTRÉ ET DESCENDU === */}
+      <div className="mx-auto max-w-7xl px-6 pb-6">
+        <img
+          src="/velvetmind/vm-wordmark.svg"
+          alt="VelvetMind Wordmark"
+          className="block mx-auto mt - [6rem] h-[200px] w-auto select-none"
+        />
+      </div>
+
     </header>
   );
 }
