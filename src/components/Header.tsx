@@ -11,7 +11,7 @@ export default function Header() {
         <Link
           href="/"
           aria-label="Accueil"
-          className="absolute left-6 top-4"
+          className="absolute left-6 top-0"
         >
           <VMBadgeSVG size={96} className="shrink-0" />
         </Link>
@@ -20,7 +20,7 @@ export default function Header() {
         <img
           src="/velvetmind/vm-wordmark.svg"  
           alt="VelvetMind Wordmark"
-          className="block mx-auto mt-[3rem] h-[90px] w-auto select-none"
+          className="block mx-auto mt-[5rem] h-[119px] w-auto select-none"
         />
       </div>
     </header>
