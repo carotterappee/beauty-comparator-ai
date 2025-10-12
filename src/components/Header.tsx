@@ -19,7 +19,7 @@ export default function Header() {
         <img
           src="/velvetmind/vm-wordmark.svg"
           alt="VelvetMind Wordmark"
-          className="block mx-auto mt - [6rem] h-[201px] w-auto select-none"
+          className="block mx-auto mt - [10rem] h-[201px] w-auto select-none"
         />
       </div>
 
