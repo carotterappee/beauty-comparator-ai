@@ -15,12 +15,7 @@ export default function Home() {
           className="mt-6 flex items-center gap-3 animate-in"
           style={{ animationDelay: "120ms" } as React.CSSProperties}
         >
-          <Link
-            href="/products"
-            className="rounded-full bg-pink-600 px-5 py-2.5 text-white shadow-lg shadow-pink-600/20 transition hover:bg-pink-700"
-          >
-            Explorer les produits
-          </Link>
+          
 
           <form
             onSubmit={(e) => {
