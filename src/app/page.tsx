@@ -1,17 +1,18 @@
 "use client";
 
-import OrnateFrame from "@/components/header/OrnateFrame";
 import LogoPin from "@/components/header/LogoPin";
 import WordmarkHeader from "@/components/header/WordmarkHeader";
+import OrnateFrame from "@/components/header/OrnateFrame";
 
 export default function Home() {
   return (
     <>
       {/* === En-tête (fond décoratif + logo + wordmark) === */}
-      <header className="relative">
-        <OrnateFrame />      {/* fond “moulure”, passe derrière grâce au -z-10 */}
-        <LogoPin />          {/* logo fixé en haut-gauche */}
-        <WordmarkHeader />   {/* “VelvetMind” centré */}
+      <header className="relative h-[280px] sm:h-[320px] md:h-[360px] bg-[#fdf8f9]">
+        <OrnateFrame />      
+        <LogoPin />
+        <div className="pt-24 sm:pt-28 md:pt-32"></div>         
+        <WordmarkHeader />  
       </header>
 
       {/* === Contenu principal === */}
