@@ -27,61 +27,46 @@ export default function OrnateFrame() {
         <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
           <feDropShadow dx="0" dy="6" stdDeviation="6" floodColor="rgba(181,125,105,0.18)" />
         </filter>
+
+        {/* Arabesque de référence (inspirée de ton visuel) – dessinée vers le haut, ~170x120px */}
+        <path
+          id="arabesque"
+          d="
+            M0,0
+            C36,-18 82,-20 120,-2
+            C86,12 66,24 60,44
+            C52,70 70,92 92,104
+            C66,98 46,88 30,66
+            C16,46 8,26 12,10
+
+            M26,6
+            C40,-4 60,-8 78,-4
+
+            M88,14
+            C112,8 132,16 148,34
+
+            M102,36
+            C118,50 126,70 122,90
+
+            M42,34
+            C30,48 24,66 28,84
+          "
+        />
       </defs>
 
-      {/* --- arrière-plan marbré --- */}
+      {/* Arrière-plan */}
       <rect width="1440" height="360" fill="url(#marble)" />
 
-      {/* --- arabesques dorées (coins) --- */}
-      {/* haut-gauche */}
-      <g filter="url(#soft)" opacity="0.92">
-        <path
-          d="M36,64 
-             Q84,46 128,64 
-             Q92,82 116,98 
-             Q72,98 52,122 
-             Q60,96 36,64 Z"
-          fill="none" stroke="url(#metal)" strokeWidth="5" strokeLinecap="round"
-        />
-        <path d="M118,66 q-18,10 -22,30" fill="none" stroke="url(#metal)" strokeWidth="4" strokeLinecap="round"/>
-
-        {/* haut-droite (miroir) */}
-        <g transform="translate(1440,0) scale(-1,1)">
-          <path
-            d="M36,64 
-               Q84,46 128,64 
-               Q92,82 116,98 
-               Q72,98 52,122 
-               Q60,96 36,64 Z"
-            fill="none" stroke="url(#metal)" strokeWidth="5" strokeLinecap="round"
-          />
-          <path d="M118,66 q-18,10 -22,30" fill="none" stroke="url(#metal)" strokeWidth="4" strokeLinecap="round"/>
-        </g>
-
+      {/* Arabesques bas-gauche & bas-droite */}
+      <g filter="url(#soft)" stroke="url(#metal)" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" fill="none" opacity="0.95">
         {/* bas-gauche */}
-        <g transform="translate(0,360) scale(1,-1)">
-          <path
-            d="M36,64 
-               Q84,46 128,64 
-               Q92,82 116,98 
-               Q72,98 52,122 
-               Q60,96 36,64 Z"
-            fill="none" stroke="url(#metal)" strokeWidth="5" strokeLinecap="round"
-          />
-          <path d="M118,66 q-18,10 -22,30" fill="none" stroke="url(#metal)" strokeWidth="4" strokeLinecap="round"/>
+        <g transform="translate(28,338) scale(1,-1)">
+          <use href="#arabesque" />
         </g>
 
-        {/* bas-droite */}
-        <g transform="translate(1440,360) scale(-1,-1)">
-          <path
-            d="M36,64 
-               Q84,46 128,64 
-               Q92,82 116,98 
-               Q72,98 52,122 
-               Q60,96 36,64 Z"
-            fill="none" stroke="url(#metal)" strokeWidth="5" strokeLinecap="round"
-          />
-          <path d="M118,66 q-18,10 -22,30" fill="none" stroke="url(#metal)" strokeWidth="4" strokeLinecap="round"/>
+        {/* bas-droite (miroir) */}
+        <g transform="translate(1412,338) scale(-1,-1)">
+          <use href="#arabesque" />
         </g>
       </g>
     </svg>
