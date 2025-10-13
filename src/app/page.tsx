@@ -8,11 +8,12 @@ export default function Home() {
   return (
     <>
       {/* === En-tête (fond décoratif + logo + wordmark) === */}
-      <header className="relative h-[280px] sm:h-[320px] md:h-[360px] bg-[#fdf8f9]">
+      <header className="relative h-[240px] bg-[#fdf8f9] overflow-hidden">
         <OrnateFrame />      
         <LogoPin />
-        <div className="pt-24 sm:pt-28 md:pt-32"></div>         
+        <div className="pt-20">         
         <WordmarkHeader />  
+        </div>
       </header>
 
       {/* === Contenu principal === */}

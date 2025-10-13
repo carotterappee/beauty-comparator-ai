@@ -1,61 +1,22 @@
-// src/components/header/OrnateFrame.tsx
-"use client";
-
 export default function OrnateFrame() {
   return (
     <div
-      className="
-        relative
-        w-full
-        h-[240px]           /* hauteur du bandeau */
-        -z-10               /* passe derrière le logo & le mot */
-        select-none
-      "
       aria-hidden
+      className="pointer-events-none absolute inset-x-0 top-0 h-[180px] md:h-[220px]"
     >
-      {/* Fond soyeux */}
-      <div
-        className="
-          absolute inset-0
-          rounded-none
-          bg-[linear-gradient(135deg,#f6ece6_0%,#f2e3da_100%)]
-        "
-      />
+      {/* Cadre intérieur doux */}
+      <div className="absolute inset-x-6 top-4 bottom-4 rounded-[28px]
+                      border border-[#c49a86]/30
+                      shadow-[inset_0_0_30px_#fff,inset_0_10px_40px_#e7d0c4]
+                      bg-gradient-to-b from-white/70 to-[#fff6f2]/60" />
 
-      {/* Grand cadre biseauté (bord extérieur) */}
-      <div
-        className="
-          absolute inset-[10px]
-          rounded-[28px]
-          border border-[#eadad0]
-          shadow-[inset_0_1px_0_#fff,inset_0_-1px_0_#dccac0]
-          bg-[linear-gradient(180deg,rgba(255,255,255,0.45),rgba(255,255,255,0))]
-        "
-      />
+      {/* Capot supérieur mouluré */}
+      <div className="absolute left-10 right-10 top-0 h-16 rounded-b-[40px]
+                      bg-gradient-to-b from-[#ead6ca] to-[#dfc6b8]
+                      shadow-[0_6px_20px_rgba(181,125,105,.25)]" />
 
-      {/* Liseré intérieur + ombre douce pour l'effet 'moulure' */}
-      <div
-        className="
-          absolute inset-[22px]
-          rounded-[22px]
-          border border-[#e8d6cb]
-          shadow-[inset_0_10px_30px_rgba(59,45,43,0.08)]
-          bg-[linear-gradient(180deg,rgba(255,255,255,0.35),rgba(255,255,255,0))]
-        "
-      />
-
-      {/* 'Fronton' supérieur arrondi (petit bombé) */}
-      <div
-        className="
-          absolute left-1/2 -translate-x-1/2 top-[6px]
-          w-[min(1200px,92%)]
-          h-[86px]
-          rounded-b-[60px]
-          bg-[linear-gradient(180deg,#f6ede7,#ead6ca)]
-          shadow-[0_10px_28px_rgba(59,45,43,0.10),inset_0_1px_0_#fff,inset_0_-6px_12px_rgba(181,125,105,0.30)]
-          border border-[#e9d9cd]
-        "
-      />
+      {/* Liseré bas du cadre */}
+      <div className="absolute left-10 right-10 bottom-0 h-[2px] bg-[#d4b3a1]/40 rounded-full" />
     </div>
   );
 }
