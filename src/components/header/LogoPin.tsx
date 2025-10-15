@@ -11,7 +11,7 @@ export default function Header() {
       <Link
         href="/"
         aria-label="Accueil"
-        className="absolute left-6 top-[40px] md:top-[56px] lg:top-[64px]"
+        className="absolute left-6 top-[32px] md:top-[56px] lg:top-[64px]"
       >
         <VMBadgeSVG size={96} className="shrink-0" />
       </Link>
