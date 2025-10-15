@@ -5,7 +5,7 @@ export default function Home() {
     <>
 
       {/* —— Séparation décorative entre header et contenu —— */}
-      <div className="relative w-full h-[96px]- mt-[12px] flex items-end justify-center bg-transparent">
+      <div className="relative w-full h-[96px]- mt-[24px] flex items-end justify-center bg-transparent">
   <svg viewBox="0 0 1440 96" preserveAspectRatio="none" className="w-full h-full">
     <defs>
       <linearGradient id="velvetLine" x1="0" y1="0" x2="1" y2="0">
