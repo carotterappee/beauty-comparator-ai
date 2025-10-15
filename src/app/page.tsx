@@ -3,44 +3,6 @@
 export default function Home() {
   return (
     <>
-    {/* ——— Séparation décorative HAUTE (version floutée et douce) ——— */}
-<div className="relative w-full h-[70px] flex items-start justify-center bg-transparent">
-  <svg
-    viewBox="0 0 1440 80"
-    preserveAspectRatio="none"
-    className="w-full h-full opacity-85 blur-[1px]"
-  >
-    <defs>
-      <linearGradient id="velvetTop" x1="0" y1="0" x2="1" y2="0">
-        <stop offset="0%" stopColor="#e7c9b7" />
-        <stop offset="50%" stopColor="#d5a990" />
-        <stop offset="100%" stopColor="#f0ddd2" />
-      </linearGradient>
-      <filter id="softTopGlow" x="-20%" y="-50%" width="140%" height="220%">
-        <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="rgba(181,125,105,0.2)" />
-      </filter>
-    </defs>
-
-    {/* Ruban diffusé doux */}
-    <rect x="0" y="46" width="1440" height="22" fill="url(#velvetTop)" opacity="0.1" />
-
-    {/* Ligne lumineuse floutée */}
-    <path
-      d="M0,50 L1440,50"
-      stroke="url(#velvetTop)"
-      strokeWidth="2.5"
-      opacity="0.65"
-      filter="url(#softTopGlow)"
-    />
-
-    {/* Ornement central atténué */}
-    <g transform="translate(720,50)" fill="none" stroke="url(#velvetTop)" strokeWidth="2" opacity="0.7">
-      <path d="M-80,0 Q0,28 80,0" />
-      <path d="M-60,2 Q0,18 60,2" />
-      <circle cx="0" cy="0" r="2.2" fill="#d8a58f" opacity="0.8" />
-    </g>
-  </svg>
-</div>
 
       {/* —— Séparation décorative entre header et contenu —— */}
       <div className="relative w-full h-[96px] flex items-end justify-center bg-transparent">
