@@ -6,7 +6,7 @@ export default function WordmarkHeader() {
       <img
         src="/velvetmind/vm-wordmark.svg"
         alt="VelvetMind Wordmark"
-        className="block mx-auto h-[300px] w-auto select-none"
+        className="block mx-auto h-[300px] w-auto select-none mt-[20px]"
       />
     </div>
   );
