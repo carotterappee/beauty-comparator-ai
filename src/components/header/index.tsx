@@ -51,7 +51,7 @@ export default function Header() {
 </div> 
 
       {/* Logo en haut-gauche */}
-      <div className="absolute left-6 top-0">
+      <div className="absolute left-6 top-8">
         <LogoPin />
       </div>
 
