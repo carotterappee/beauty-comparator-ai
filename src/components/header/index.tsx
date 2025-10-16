@@ -3,7 +3,7 @@
 import LogoPin from "./LogoPin";
 import WordmarkHeader from "./WordmarkHeader";
 import OrnateFrame from "./OrnateFrame";
-import SmallArabesque from "./SmallArabesque";
+import Ornament from "./Ornament";
 
 export default function Header() {
   return (
@@ -57,17 +57,24 @@ export default function Header() {
         <LogoPin />
       </div>
 
-      {/* Wordmark + petites arabesques (au-dessus et en dessous) */}
+      
+      {/* Wordmark + arabesques (ton SVG) */}
       <div className="relative mx-auto max-w-7xl px-6 pt-24 pb-6 flex justify-center">
-        {/* arabesque AU-DESSUS */}
-        <SmallArabesque className="pointer-events-none absolute -top-3 md:-top-4 w-[220px] h-[28px] z-20" />
+        {/* arabesque AU-DESSUS (ton fichier) */}
+        <Ornament
+          src="/velvetmind/arabesque-small.svg"
+          className="absolute left-1/2 -translate-x-1/2 -top-3 md:-top-4 z-30 w-[220px] h-[28px]"
+        />
 
         <div className="relative z-10">
           <WordmarkHeader />
         </div>
 
-        {/* arabesque EN-DESSOUS */}
-        <SmallArabesque className="pointer-events-none absolute -bottom-3 md:-bottom-4 w-[220px] h-[28px] z-20" />
+        {/* arabesque EN-DESSOUS (même fichier) */}
+        <Ornament
+          src="/velvetmind/arabesque-small.svg"
+          className="absolute left-1/2 -translate-x-1/2 -bottom-3 md:-bottom-4 z-30 w-[220px] h-[28px]"
+        />
       </div>
     </header>
   );
