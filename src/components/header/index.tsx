@@ -60,14 +60,14 @@ export default function Header() {
       {/* Wordmark + petites arabesques (au-dessus et en dessous) */}
       <div className="relative mx-auto max-w-7xl px-6 pt-24 pb-6 flex justify-center">
         {/* arabesque AU-DESSUS */}
-        <SmallArabesque className="pointer-events-none absolute -top-3 md:-top-4 w-[220px] h-[28px] opacity-95" />
+        <SmallArabesque className="pointer-events-none absolute -top-3 md:-top-4 w-[220px] h-[28px] z-20" />
 
         <div className="relative z-10">
           <WordmarkHeader />
         </div>
 
         {/* arabesque EN-DESSOUS */}
-        <SmallArabesque className="pointer-events-none absolute -bottom-3 md:-bottom-4 w-[220px] h-[28px] opacity-95" />
+        <SmallArabesque className="pointer-events-none absolute -bottom-3 md:-bottom-4 w-[220px] h-[28px] z-20" />
       </div>
     </header>
   );
