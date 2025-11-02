@@ -8,7 +8,7 @@ export default function OrnateFrame() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(120% 95% at 50% 20%, #fce9e4 0%, #f8d9d2 40%, #f5ccc2 70%, #f2c2b8 100%)",
+            "radial-gradient(120% 95% at 50% 20%, #e9bed8ff 0%, #ecc0e2ff 40%, #f5c2e8ff 70%, #eac2d7ff 100%)",
         }}
       />
 
