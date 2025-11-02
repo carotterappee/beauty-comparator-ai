@@ -17,7 +17,7 @@ export default function OrnateFrame() {
         className="absolute inset-0 mix-blend-overlay opacity-70"
         style={{
           background:
-            "linear-gradient(180deg, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0) 50%, rgba(255,230,225,0.5) 100%)",
+            "linear-gradient(180deg, rgba(187, 136, 166, 0.65) 0%, rgba(213, 181, 209, 0) 50%, rgba(255,230,225,0.5) 100%)",
         }}
       />
 

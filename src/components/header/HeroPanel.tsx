@@ -1,8 +1,8 @@
 "use client";
 import Header from ".";        
 export default function HeroPanel() {
-  const panelBg = "#fff7f4";
-  const pageBg = "#fdf8f9";
+  const panelBg = "#f8d9f79e";
+  const pageBg = "#fcf9e781";
 
   return (
     <section className="relative isolate">
