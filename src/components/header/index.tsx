@@ -26,7 +26,7 @@ export default function Header() {
           className="
             select-none pointer-events-none absolute left-1/2 -translate-x-1/2
             top-[48px] md:top-[44px]   /* proche du haut, pas de rotation */
-            w-[170px] md:w-[180px] aspect-[16/5] h-auto object-contain
+            w-[220px] md:w-[240px] aspect-[16/5] h-auto object-contain
             z-[50]
           "
         />
@@ -45,7 +45,7 @@ export default function Header() {
           className="
             select-none pointer-events-none absolute left-1/2 -translate-x-1/2
             bottom-[22px] md:bottom-[26px]  /* valeur POSITIVE, bien dans le header */
-            w-[170px] md:w-[180px] aspect-[16/5] h-auto object-contain
+            w-[220px] md:w-[240px] aspect-[16/5] h-auto object-contain
             rotate-180 z-[60]
           "
         />
