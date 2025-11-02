@@ -3,12 +3,33 @@
 export default function OrnateFrame() {
   return (
     <div aria-hidden className="absolute inset-0 -z-10 pointer-events-none">
-      {/* ===== Panneau de l'en-tête (teinte un peu différente) ===== */}
-{/* Fond rose poudré nacré */}
-<div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,#fbe7e2_0%,#f9dcd6_40%,#f7d1c9_75%,#f6c7be_100%)]" />
+      {/* ===== FOND ROSE POUDRÉ NACRÉ (avec effet scintillant subtil) ===== */}
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(120% 95% at 50% 20%, #fce9e4 0%, #f8d9d2 40%, #f5ccc2 70%, #f2c2b8 100%)",
+        }}
+      />
 
-{/* Lueur satinée subtile */}
-<div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-[#f8e1da]/60 mix-blend-overlay opacity-60" />
+      {/* voile nacré brillant */}
+      <div
+        className="absolute inset-0 mix-blend-overlay opacity-70"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(255,255,255,0.65) 0%, rgba(255,255,255,0) 50%, rgba(255,230,225,0.5) 100%)",
+        }}
+      />
+
+      {/* scintillement doux (effet pailleté léger) */}
+      <div
+        className="absolute inset-0 opacity-[0.08] pointer-events-none"
+        style={{
+          backgroundImage:
+            "repeating-radial-gradient(circle at 50% 50%, rgba(255,255,255,0.7) 0 0.6px, transparent 1.2px)",
+          backgroundSize: "120px 120px",
+        }}
+      />
 
       {/* ===== LIGNES DÉLIMITANTES chic (haut) ===== */}
       <div className="absolute inset-x-0 top-[18px]">
