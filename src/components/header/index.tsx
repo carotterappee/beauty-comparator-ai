@@ -7,8 +7,7 @@ import OrnateFrame from "./OrnateFrame";
 export default function Header() {
   return (
     // header au-dessus, on ne touche pas
-    <header className="relative isolate z-[40] w-full h-[360px] md:h-[400px] lg:h-[440px] overflow-hidden">
-      <OrnateFrame />
+<header className="relative isolate z-[40] w-full h-[360px] md:h-[400px] lg:h-[440px] overflow-visible">      <OrnateFrame />
 
       {/* Logo */}
       <div className="absolute left-6 top-8">
