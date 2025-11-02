@@ -2,38 +2,21 @@
 
 export default function OrnateFrame() {
   return (
-    <div aria-hidden className="absolute inset-0 -z-10">
-      {/* --- Fond poudré doux --- */}
-      <div className="w-full h-full bg-gradient-to-b from-[#fff9f6] via-[#fdf0ea] to-[#fae7de]" />
+    <div aria-hidden className="absolute inset-0 -z-10 pointer-events-none">
+      {/* ===== Panneau de l'en-tête (teinte un peu différente) ===== */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#fff7f4] via-[#feecea] to-[#fae7de]" />
 
-      {/* --- Ligne de démarcation chic (bas de l'entête) --- */}
-      <svg
-        className="absolute bottom-0 left-0 w-full h-[40px]"
-        viewBox="0 0 1440 40"
-        preserveAspectRatio="none"
-      >
-        <defs>
-          {/* Dégradé rose-gold */}
-          <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%" stopColor="#e7c9b7" />
-            <stop offset="50%" stopColor="#d5a990" />
-            <stop offset="100%" stopColor="#f0ddd2" />
-          </linearGradient>
+      {/* ===== LIGNES DÉLIMITANTES chic (haut) ===== */}
+      <div className="absolute inset-x-0 top-[18px]">
+        <div className="h-[2px] bg-gradient-to-r from-[#e3bfae] via-[#cf9f87] to-[#edd6cb] shadow-[0_1px_3px_rgba(181,125,105,0.25)]" />
+        <div className="mt-[4px] h-px bg-gradient-to-r from-[#e3bfae] via-[#cf9f87] to-[#edd6cb] opacity-80" />
+      </div>
 
-          {/* Lueur douce */}
-          <filter id="softShadow" x="-10%" y="-50%" width="120%" height="200%">
-            <feDropShadow dx="0" dy="-1" stdDeviation="4" floodColor="rgba(181,125,105,0.2)" />
-          </filter>
-        </defs>
-
-        {/* Fine double ligne + léger arrondi central */}
-        <path
-          d="M0,20 Q720,40 1440,20 L1440,25 Q720,45 0,25 Z"
-          fill="url(#line)"
-          filter="url(#softShadow)"
-          opacity="0.85"
-        />
-      </svg>
+      {/* ===== LIGNES DÉLIMITANTES chic (bas) ===== */}
+      <div className="absolute inset-x-0 bottom-[18px]">
+        <div className="h-[2px] bg-gradient-to-r from-[#e3bfae] via-[#cf9f87] to-[#edd6cb] shadow-[0_-1px_3px_rgba(181,125,105,0.25)]" />
+        <div className="mt-[4px] h-px bg-gradient-to-r from-[#e3bfae] via-[#cf9f87] to-[#edd6cb] opacity-80" />
+      </div>
     </div>
   );
 }
