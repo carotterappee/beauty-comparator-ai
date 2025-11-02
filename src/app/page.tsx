@@ -1,12 +1,19 @@
 "use client";
 
+import HeroPanel from "@/components/header/HeroPanel"; // ⬅️ ajoute ça
+
 export default function Home() {
   return (
     <main className="relative min-h-[90vh] bg-[#fdf8f9]">
+      {/* --- bloc héro (logo + VelvetMind + arabesques + fondu de fond) --- */}
+      <HeroPanel />
+
       {/* arrière-plan soyeux du main */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-16 h-64 w-64 -translate-x-1/2 rounded-full bg-gradient-to-br from-pink-300/40 to-violet-300/40 blur-3xl animate-glow" />
       </div>
+
+      {/* ⛔️ supprimé : l’ancien “Séparateur bas” en SVG (doublon avec HeroPanel) */}
 
       <div className="mx-auto max-w-5xl px-4 py-10">
         <div

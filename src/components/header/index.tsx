@@ -24,7 +24,7 @@ export default function Header() {
           draggable={false}
           className="
             select-none pointer-events-none absolute left-1/2 -translate-x-1/2
-            top-[9px] md:top-[44px]   /* proche du haut, pas de rotation */
+            top-[8px] md:top-[44px]   /* proche du haut, pas de rotation */
             w-[320px] md:w-[340px] aspect-[16/5] h-auto object-contain
             z-[50]
           "
