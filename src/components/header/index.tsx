@@ -7,8 +7,7 @@ import OrnateFrame from "./OrnateFrame";
 export default function Header() {
   return (
     // header au-dessus, on ne touche pas
-<header className="relative isolate z-[40] w-full h-[360px] md:h-[400px] lg:h-[440px] overflow-visible">      <OrnateFrame />
-
+<header className="relative isolate z-[40] w-full h-[380px] md:h-[420px] lg:h-[480px] overflow-hidden pb-24">
       {/* Logo */}
       <div className="absolute left-6 top-8">
         <LogoPin />
@@ -24,7 +23,7 @@ export default function Header() {
           draggable={false}
           className="
             select-none pointer-events-none absolute left-1/2 -translate-x-1/2
-            top-[8px] md:top-[44px]   /* proche du haut, pas de rotation */
+            top-[-20px] md:top-[44px]   /* proche du haut, pas de rotation */
             w-[320px] md:w-[340px] aspect-[16/5] h-auto object-contain
             z-[50]
           "
@@ -41,9 +40,9 @@ export default function Header() {
           alt=""
           aria-hidden
           draggable={false}
-          className="
+className="
             select-none pointer-events-none absolute left-1/2 -translate-x-1/2
-            bottom-[-100px] md:bottom-[26px]  /* valeur POSITIVE, bien dans le header */
+            bottom-[-80px] md:bottom-[26px]  /* valeur POSITIVE, bien dans le header */
             w-[320px] md:w-[340px] aspect-[16/5] h-auto object-contain
             rotate-180 z-[60]
           "

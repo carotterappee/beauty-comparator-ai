@@ -4,7 +4,11 @@ export default function OrnateFrame() {
   return (
     <div aria-hidden className="absolute inset-0 -z-10 pointer-events-none">
       {/* ===== Panneau de l'en-tête (teinte un peu différente) ===== */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#fff7f4] via-[#feecea] to-[#fae7de]" />
+{/* Fond rose poudré nacré */}
+<div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,#fbe7e2_0%,#f9dcd6_40%,#f7d1c9_75%,#f6c7be_100%)]" />
+
+{/* Lueur satinée subtile */}
+<div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-[#f8e1da]/60 mix-blend-overlay opacity-60" />
 
       {/* ===== LIGNES DÉLIMITANTES chic (haut) ===== */}
       <div className="absolute inset-x-0 top-[18px]">
