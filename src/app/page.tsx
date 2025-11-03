@@ -8,10 +8,9 @@ export default function Home() {
         <div className="absolute left-1/2 top-16 h-64 w-64 -translate-x-1/2 rounded-full bg-gradient-to-br from-pink-300/40 to-violet-300/40 blur-3xl animate-glow" />
       </div>
 
-     {/* — Sous-header: petite barre de recherche “princesse” centrée — */}
-<div className="relative z-20 w-full py-12">
-  <div className="mx-auto max-w-[560px] px-4">
-    <div className="rounded-2xl bg-white/55 backdrop-blur-xl ring-1 ring-[#e8cfc3] shadow-[0_8px_30px_rgba(181,125,105,0.12)] p-3">
+     <div className="relative z-20 w-full py-6 top-6 md:top-10">
+  <div className="mx-auto max-w-5xl px-4">
+    <div className="rounded-2xl bg-white/50 backdrop-blur-xl ring-1 ring-[#e8cfc3] shadow-[0_8px_30px_rgba(181,125,105,0.12)] p-4">
       <form
         onSubmit={(e) => {
           e.preventDefault();
