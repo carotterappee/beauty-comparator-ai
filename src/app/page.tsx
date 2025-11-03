@@ -8,8 +8,8 @@ export default function Home() {
         <div className="absolute left-1/2 top-16 h-64 w-64 -translate-x-1/2 rounded-full bg-gradient-to-br from-pink-300/40 to-violet-300/40 blur-3xl animate-glow" />
       </div>
 
-     <div className="relative z-20 w-full py-6 top-6 md:top-10">
-  <div className="mx-auto max-w-5xl px-4">
+<div className="relative z-20 w-full py-6 mt-6 md:mt-10">
+    <div className="mx-auto max-w-5xl px-4">
     <div className="rounded-2xl bg-white/50 backdrop-blur-xl ring-1 ring-[#e8cfc3] shadow-[0_8px_30px_rgba(181,125,105,0.12)] p-4">
       <form
         onSubmit={(e) => {
@@ -18,8 +18,7 @@ export default function Home() {
             ?.value?.trim();
           window.location.href = q ? `/products?q=${encodeURIComponent(q)}` : "/products";
         }}
-        className="mx-auto flex items-center gap-3 rounded-full border border-[#e7c7b6] bg-white/95 px-4 py-2 shadow-sm focus-within:ring-2 focus-within:ring-[#e6b9a5] focus-within:ring-offset-0"
-      >
+className="mx-auto w-full max-w-2xl h-11 flex items-center gap-3 rounded-full border border-[#e7c7b6] bg-white/95 px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#e6b9a5] focus-within:ring-offset-0"      >
         {/* Loupe — taille forcée pour éviter tout override global */}
         <svg
           width="20" height="20"
