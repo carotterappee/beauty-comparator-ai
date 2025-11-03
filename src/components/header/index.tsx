@@ -8,9 +8,37 @@ export default function Header() {
   return (
     // header au-dessus, on ne touche pas
 <header className="relative isolate z-[40] w-full h-[380px] md:h-[420px] lg:h-[480px] overflow-hidden pb-24">
+  
       {/* Logo */}
       <div className="absolute left-6 top-8">
         <LogoPin />
+        </div>
+
+         {/* Boutons en haut-droite */}
+<div className="absolute top-8 right-8 left-auto z-[60] flex items-center gap-3">
+        <a
+          href="/signup"
+          className="rounded-full px-4 py-2 text-[13px] md:text-sm
+                     bg-[#fff6ec] border border-[#e7c9b7]
+                     text-[#7a4b3a]
+                     shadow-[0_2px_8px_rgba(181,125,105,0.18)]
+                     hover:shadow-[0_4px_14px_rgba(181,125,105,0.28)]
+                     hover:-translate-y-0.5 transition-all duration-200"
+        >
+          Créer un compte
+        </a>
+        <a
+          href="/login"
+          className="rounded-full px-4 py-2 text-[13px] md:text-sm
+                     bg-gradient-to-b from-[#fff2e6] to-[#ffe7d4]
+                     border border-[#e7c9b7]
+                     text-[#6c3f30]
+                     shadow-[0_2px_8px_rgba(181,125,105,0.2)]
+                     hover:shadow-[0_4px_14px_rgba(181,125,105,0.3)]
+                     hover:-translate-y-0.5 transition-all duration-200"
+        >
+          Se connecter
+        </a>
       </div>
 
       {/* Wordmark + arabesques */}
