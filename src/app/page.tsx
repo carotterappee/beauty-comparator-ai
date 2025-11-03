@@ -8,9 +8,10 @@ export default function Home() {
         <div className="absolute left-1/2 top-16 h-64 w-64 -translate-x-1/2 rounded-full bg-gradient-to-br from-pink-300/40 to-violet-300/40 blur-3xl animate-glow" />
       </div>
 
-<div className="relative z-20 w-full py-6 mt-6 md:mt-10">
-    <div className="mx-auto max-w-5xl px-4">
-    <div className="rounded-2xl bg-white/50 backdrop-blur-xl ring-1 ring-[#e8cfc3] shadow-[0_8px_30px_rgba(181,125,105,0.12)] p-4">
+{/* — Sous-header: petite barre de recherche “princesse” centrée — */}
+<div className="relative z-20 w-full py-8" style={{ marginTop: "50px" }}>
+  <div className="mx-auto max-w-[580px] px-4">
+    <div className="rounded-2xl bg-white/55 backdrop-blur-xl ring-1 ring-[#e8cfc3] shadow-[0_8px_30px_rgba(181,125,105,0.12)] p-3">
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -18,7 +19,8 @@ export default function Home() {
             ?.value?.trim();
           window.location.href = q ? `/products?q=${encodeURIComponent(q)}` : "/products";
         }}
-className="mx-auto w-full max-w-2xl h-11 flex items-center gap-3 rounded-full border border-[#e7c7b6] bg-white/95 px-4 shadow-sm focus-within:ring-2 focus-within:ring-[#e6b9a5] focus-within:ring-offset-0"      >
+        className="mx-auto flex items-center gap-3 rounded-full border border-[#e7c7b6] bg-white/95 px-4 py-2 shadow-sm focus-within:ring-2 focus-within:ring-[#e6b9a5] focus-within:ring-offset-0"
+      >
         {/* Loupe — taille forcée pour éviter tout override global */}
         <svg
           width="20" height="20"
@@ -50,8 +52,30 @@ className="mx-auto w-full max-w-2xl h-11 flex items-center gap-3 rounded-full bo
         </button>
       </form>
     </div>
+    {/* --- Menu de catégories élégant --- */}
+<nav className="mt-14 flex justify-center">
+  <ul className="flex flex-wrap justify-center gap-8 px-10 py-4 rounded-full bg-white/60 backdrop-blur-xl ring-1 ring-[#e8cfc3]/70 shadow-[0_6px_20px_rgba(181,125,105,0.12)] text-[#5b3d36] font-medium text-[1rem] tracking-wide">
+    {[
+      "Soins visage",
+      "Cheveux",
+      "Maquillage",
+      "Parfums",
+      "Corps",
+      "Accessoires",
+      "Nouveautés",
+    ].map((item) => (
+      <li
+        key={item}
+        className="cursor-pointer px-4 py-1.5 rounded-full transition-all duration-300 hover:bg-gradient-to-b hover:from-[#fdebe3] hover:to-[#f6d5c7] hover:shadow-[0_3px_10px_rgba(181,125,105,0.18)] hover:text-[#b57d69]"
+      >
+        {item}
+      </li>
+    ))}
+  </ul>
+</nav>
   </div>
 </div>
+
     </main>
   );
 }

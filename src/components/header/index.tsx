@@ -76,7 +76,7 @@ export default function Header() {
           draggable={false}
 className="
             select-none pointer-events-none absolute left-1/2 -translate-x-1/2
-            bottom-[-80px] md:bottom-[26px]  /* valeur POSITIVE, bien dans le header */
+            bottom-[-88px] md:bottom-[26px]  /* valeur POSITIVE, bien dans le header */
             w-[320px] md:w-[340px] aspect-[16/5] h-auto object-contain
             rotate-180 z-[60]
           "
