@@ -20,7 +20,7 @@ export default function Header() {
 >
   <a
     href="/signup"
-    className="px-5 py-2 rounded-full text-[14px] font-medium tracking-wide
+    className="no-underline px-5 py-2 rounded-full text-[14px] font-medium tracking-wide
                bg-gradient-to-b from-[#fff8f2] via-[#fff0e6] to-[#ffe6d8]
                text-[#804c3a] border border-[#e6c2b3]
                shadow-[inset_0_1px_1px_rgba(255,255,255,0.6),0_3px_6px_rgba(181,125,105,0.2)]
@@ -32,7 +32,7 @@ export default function Header() {
   </a>
   <a
     href="/login"
-    className="px-5 py-2 rounded-full text-[14px] font-medium tracking-wide
+    className="no-underline px-5 py-2 rounded-full text-[14px] font-medium tracking-wide
                bg-gradient-to-b from-[#fff6f9] via-[#fde8f1] to-[#f9dbe8]
                text-[#7a405a] border border-[#e3b3c5]
                shadow-[inset_0_1px_1px_rgba(255,255,255,0.7),0_3px_6px_rgba(181,125,105,0.2)]
