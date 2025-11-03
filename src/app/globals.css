@@ -43,3 +43,9 @@ body {
   -webkit-font-smoothing: antialiased;
   transition: background .3s ease, color .3s ease;
 }
+
+/* Empêche les SVG de devenir énormes à cause d’un style global */
+svg {
+  height: auto;
+  width: auto;
+}
