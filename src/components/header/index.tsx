@@ -15,7 +15,7 @@ export default function Header() {
         </div>
 
          {/* Boutons en haut-droite */}
-<div className="absolute top-8 right-8 left-auto z-[60] flex items-center gap-3">
+<div className="absolute top-8 right-8 z-[60] flex items-center gap-3" style={{ left: "auto" }}>
         <a
           href="/signup"
           className="rounded-full px-4 py-2 text-[13px] md:text-sm
