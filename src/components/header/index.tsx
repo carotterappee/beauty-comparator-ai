@@ -14,32 +14,35 @@ export default function Header() {
         <LogoPin />
         </div>
 
-         {/* Boutons en haut-droite */}
-<div className="absolute top-8 right-8 z-[60] flex items-center gap-3" style={{ left: "auto" }}>
-        <a
-          href="/signup"
-          className="rounded-full px-4 py-2 text-[13px] md:text-sm
-                     bg-[#fff6ec] border border-[#e7c9b7]
-                     text-[#7a4b3a]
-                     shadow-[0_2px_8px_rgba(181,125,105,0.18)]
-                     hover:shadow-[0_4px_14px_rgba(181,125,105,0.28)]
-                     hover:-translate-y-0.5 transition-all duration-200"
-        >
-          Créer un compte
-        </a>
-        <a
-          href="/login"
-          className="rounded-full px-4 py-2 text-[13px] md:text-sm
-                     bg-gradient-to-b from-[#fff2e6] to-[#ffe7d4]
-                     border border-[#e7c9b7]
-                     text-[#6c3f30]
-                     shadow-[0_2px_8px_rgba(181,125,105,0.2)]
-                     hover:shadow-[0_4px_14px_rgba(181,125,105,0.3)]
-                     hover:-translate-y-0.5 transition-all duration-200"
-        >
-          Se connecter
-        </a>
-      </div>
+         {/* Boutons en haut-droite (forcés) */}
+<div
+  className="z-[80] flex items-center gap-3"
+  style={{ position: "absolute", top: "2rem", right: "2rem", left: "auto", bottom: "auto" }}
+>
+  <a
+    href="/signup"
+    className="rounded-full px-4 py-2 text-[13px] md:text-sm
+               bg-[#fff6ec] border border-[#e7c9b7]
+               text-[#7a4b3a]
+               shadow-[0_2px_8px_rgba(181,125,105,0.18)]
+               hover:shadow-[0_4px_14px_rgba(181,125,105,0.28)]
+               hover:-translate-y-0.5 transition-all duration-200"
+  >
+    Créer un compte
+  </a>
+  <a
+    href="/login"
+    className="rounded-full px-4 py-2 text-[13px] md:text-sm
+               bg-gradient-to-b from-[#fff2e6] to-[#ffe7d4]
+               border border-[#e7c9b7]
+               text-[#6c3f30]
+               shadow-[0_2px_8px_rgba(181,125,105,0.2)]
+               hover:shadow-[0_4px_14px_rgba(181,125,105,0.3)]
+               hover:-translate-y-0.5 transition-all duration-200"
+  >
+    Se connecter
+  </a>
+</div>
 
       {/* Wordmark + arabesques */}
       <div className="relative mx-auto max-w-7xl px-6 pt-24 pb-6 flex justify-center">
