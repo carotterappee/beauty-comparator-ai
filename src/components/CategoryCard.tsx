@@ -1,42 +1,67 @@
 // src/components/CategoryCard.tsx
+"use client";
+
 import Link from "next/link";
-// Si tu préfères <Image/>, décommente les 2 lignes suivantes et vois la note plus bas
-// import Image from "next/image";
-// import type { StaticImageData } from "next/image";
 
 type Props = {
   title: string;
   href: string;
   subtitle?: string;
-  image?: string; // ✅ on ajoute le prop image
+  image?: string;
 };
 
 export default function CategoryCard({ title, href, subtitle, image }: Props) {
   return (
     <Link
       href={href}
-      className="group block overflow-hidden rounded-2xl border bg-white/70 shadow-sm backdrop-blur transition hover:shadow-md"
+      className="
+        group block overflow-hidden
+        rounded-[28px]
+        bg-[radial-gradient(120%_100%_at_10%_0%,#f6e4dc_0%,#efd4c3_40%,#f8e8e1_100%)]
+        ring-1 ring-[#e8cfc3]/70
+        shadow-[0_12px_40px_rgba(181,125,105,0.15)]
+        hover:shadow-[0_16px_45px_rgba(181,125,105,0.18)]
+        transition-all duration-300 ease-out
+        backdrop-blur-sm
+      "
     >
-      {/* vignette */}
+      {/* Image d’arrière-plan si fournie */}
       {image ? (
-        // variante simple avec <img> pour éviter toute config Next/Image
-        <div className="aspect-[16/9] overflow-hidden">
+        <div className="relative aspect-[16/9] overflow-hidden rounded-t-[28px]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={image}
             alt={title}
-            className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+            className="h-full w-full object-cover opacity-90 transition duration-500 group-hover:scale-105 group-hover:opacity-100"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#fdf8f9e8] via-[#fdf8f950] to-transparent" />
         </div>
       ) : (
-        <div className="aspect-[16/9] bg-gradient-to-br from-pink-100 to-purple-100" />
+        <div className="aspect-[16/9] bg-gradient-to-br from-pink-100 to-[#f8e8e1]" />
       )}
 
-      {/* texte */}
-      <div className="p-5">
-        <h3 className="font-semibold tracking-wide">{title}</h3>
-        {subtitle && <p className="mt-1 text-xs text-gray-500">{subtitle}</p>}
-        <div className="mt-3 text-pink-600">Découvrir →</div>
+      {/* Bloc texte */}
+      <div className="p-6 md:p-8 text-center">
+        <h3
+          className="
+            text-[#5c3f36]
+            text-xl md:text-2xl font-semibold tracking-wide
+            transition-colors duration-200
+            group-hover:text-[#b57d69]
+          "
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          {title}
+        </h3>
+
+        {subtitle && (
+          <p
+            className="mt-2 text-sm text-[#8b6c60]/90"
+            style={{ fontFamily: "Marcellus, serif" }}
+          >
+            {subtitle}
+          </p>
+        )}
       </div>
     </Link>
   );
