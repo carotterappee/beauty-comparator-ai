@@ -1,41 +1,21 @@
 "use client";
 
+import SubHeader from "@/components/SubHeader"; // ⬅️ on branche le sous-header
+
 export default function Home() {
   return (
     <main className="relative min-h-[90vh] bg-[#fdf8f9]">
-      {/* arrière-plan soyeux du main */}
+      {/* arrière-plan soyeux du main (on garde) */}
       <div aria-hidden className="pointer-events-none absolute inset-0 -z-10">
         <div className="absolute left-1/2 top-16 h-64 w-64 -translate-x-1/2 rounded-full bg-gradient-to-br from-pink-300/40 to-violet-300/40 blur-3xl animate-glow" />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 py-10">
-        <div
-          className="mt-6 flex items-center gap-3 animate-in"
-          style={{ animationDelay: "120ms" } as React.CSSProperties}
-        >
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              const q = (e.currentTarget.elements.namedItem("q") as HTMLInputElement | null)
-                ?.value
-                ?.trim();
-              window.location.href = q ? `/products?q=${encodeURIComponent(q)}` : "/products";
-            }}
-            className="hidden sm:flex items-center gap-2"
-          >
-            <input
-              name="q"
-              placeholder="Rechercher un soin, une marque…"
-              className="w-64 rounded-full border px-4 py-2 bg-white/80 focus:outline-none focus:ring-2 focus:ring-pink-300"
-            />
-            <button
-              type="submit"
-              className="rounded-full border px-4 py-2 text-gray-700 hover:bg-white"
-            >
-              Rechercher
-            </button>
-          </form>
-        </div>
+      {/* 👉 Sous-header : menu vertical + barre de recherche translucide */}
+      <SubHeader />
+
+      {/* zone de contenu de ta page */}
+      <div className="mx-auto max-w-6xl px-4 py-12">
+        {/* ton contenu arrive ici */}
       </div>
     </main>
   );

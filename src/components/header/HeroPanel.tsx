@@ -1,7 +1,7 @@
 "use client";
 import Header from ".";        
 export default function HeroPanel() {
-  const panelBg = "#f8d9f79e";
+  const panelBg = "#f6e3f2b4";
   const pageBg = "#fcf9e781";
 
   return (
