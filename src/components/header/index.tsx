@@ -6,13 +6,30 @@ export default function Header() {
   return (
     <header className="relative w-full h-[300px] md:h-[340px] bg-[#f7eaf2] flex flex-col items-center justify-center shadow-[0_8px_24px_rgba(181,125,105,0.08)]">
       {/* Actions top-right */}
-     <div className="absolute right-8 top-5 flex items-center gap-4 md:gap-6 text-[#6b4a3f]">
+     <div
+  style={{
+    position: "absolute",
+    top: "20px",     // distance depuis le haut
+    right: "40px",   // distance depuis le bord droit
+    display: "flex",
+    alignItems: "center",
+    gap: "20px",     // espace entre les éléments
+    color: "#6b4a3f",
+  }}
+>
   {/* Favoris (cœur) */}
   <Link
     href="/favorites"
     aria-label="Favoris"
     title="Favoris"
-    className="group p-2 rounded-full bg-white/70 ring-1 ring-[#e7c7b6] hover:bg-white shadow-sm transition"
+    style={{
+      padding: "6px",
+      borderRadius: "50%",
+      background: "rgba(255,255,255,0.7)",
+      border: "1px solid #e7c7b6",
+      boxShadow: "0 2px 6px rgba(181,125,105,0.15)",
+      transition: "all 0.3s ease",
+    }}
   >
     <svg
       width="18"
@@ -23,7 +40,7 @@ export default function Header() {
       strokeWidth="1.8"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="text-[#6b4a3f] group-hover:text-[#b57d69]"
+      style={{ color: "#6b4a3f" }}
     >
       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 1 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z" />
     </svg>
@@ -34,7 +51,14 @@ export default function Header() {
     href="/cart"
     aria-label="Panier"
     title="Panier"
-    className="group p-2 rounded-full bg-white/70 ring-1 ring-[#e7c7b6] hover:bg-white shadow-sm transition"
+    style={{
+      padding: "6px",
+      borderRadius: "50%",
+      background: "rgba(255,255,255,0.7)",
+      border: "1px solid #e7c7b6",
+      boxShadow: "0 2px 6px rgba(181,125,105,0.15)",
+      transition: "all 0.3s ease",
+    }}
   >
     <svg
       width="18"
@@ -45,7 +69,7 @@ export default function Header() {
       strokeWidth="1.8"
       strokeLinecap="round"
       strokeLinejoin="round"
-      className="text-[#6b4a3f] group-hover:text-[#b57d69]"
+      style={{ color: "#6b4a3f" }}
     >
       <circle cx="9" cy="21" r="1" />
       <circle cx="20" cy="21" r="1" />
@@ -56,7 +80,18 @@ export default function Header() {
   {/* Se connecter */}
   <Link
     href="/login"
-    className="no-underline rounded-full px-3.5 py-1.5 text-sm font-medium text-[#6b4a3f] bg-white/80 ring-1 ring-[#e7c7b6] shadow-[0_2px_8px_rgba(181,125,105,0.12)] hover:bg-white hover:text-[#b57d69] transition"
+    style={{
+      textDecoration: "none",
+      borderRadius: "999px",
+      padding: "6px 14px",
+      fontSize: "14px",
+      fontWeight: 500,
+      color: "#6b4a3f",
+      background: "rgba(255,255,255,0.8)",
+      border: "1px solid #e7c7b6",
+      boxShadow: "0 2px 6px rgba(181,125,105,0.15)",
+      transition: "all 0.3s ease",
+    }}
   >
     Se connecter
   </Link>
@@ -64,7 +99,17 @@ export default function Header() {
   {/* Créer un compte */}
   <Link
     href="/signup"
-    className="no-underline rounded-full px-3.5 py-1.5 text-sm font-medium text-white bg-[#b57d69] shadow-[0_6px_18px_rgba(181,125,105,0.25)] hover:brightness-105 transition"
+    style={{
+      textDecoration: "none",
+      borderRadius: "999px",
+      padding: "6px 14px",
+      fontSize: "14px",
+      fontWeight: 500,
+      color: "#fff",
+      background: "#b57d69",
+      boxShadow: "0 4px 12px rgba(181,125,105,0.25)",
+      transition: "all 0.3s ease",
+    }}
   >
     Créer un compte
   </Link>

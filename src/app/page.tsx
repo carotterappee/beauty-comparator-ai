@@ -30,6 +30,7 @@ export default function Home() {
     </li>
   ))}
 </ul>
+
           </nav>
         </div>
       </section>
