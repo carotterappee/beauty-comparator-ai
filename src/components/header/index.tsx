@@ -8,13 +8,24 @@ import { supabase } from "@/lib/supabaseClient";
 export default function Header() {
   const router = useRouter();
   const [user, setUser] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
 
-  // Écoute l'état de connexion Supabase
+  // ✅ Récupération et suivi de la session utilisateur
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => setUser(data.user ?? null));
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, session) => setUser(session?.user ?? null)
-    );
+    // Récupère la session au premier rendu
+    supabase.auth.getSession().then(({ data }) => {
+      setUser(data.session?.user ?? null);
+      setLoading(false);
+    });
+
+    // Écoute tous les changements d’auth (connexion / déconnexion)
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((_event, session) => {
+      setUser(session?.user ?? null);
+      setLoading(false);
+    });
+
     return () => subscription.unsubscribe();
   }, []);
 
@@ -24,11 +35,11 @@ export default function Header() {
       <div
         style={{
           position: "absolute",
-          top: "20px",     // distance depuis le haut
-          right: "40px",   // distance depuis le bord droit
+          top: "20px",
+          right: "40px",
           display: "flex",
           alignItems: "center",
-          gap: "20px",     // espace entre les éléments
+          gap: "20px",
           color: "#6b4a3f",
         }}
       >
@@ -93,89 +104,86 @@ export default function Header() {
         </Link>
 
         {/* --- Affichage selon connexion --- */}
-        {user ? (
-          <>
-            {/* Mon profil */}
-            <button
-              onClick={() => router.push("/profil")}
-              style={{
-                textDecoration: "none",
-                borderRadius: "999px",
-                padding: "6px 14px",
-                fontSize: "14px",
-                fontWeight: 500,
-                color: "#6b4a3f",
-                background: "rgba(255,255,255,0.8)",
-                border: "1px solid #e7c7b6",
-                boxShadow: "0 2px 6px rgba(181,125,105,0.15)",
-                transition: "all 0.3s ease",
-                cursor: "pointer",
-              }}
-            >
-              Mon profil
-            </button>
+        {!loading && (
+          user ? (
+            <>
+              <button
+                onClick={() => router.push("/profil")}
+                style={{
+                  textDecoration: "none",
+                  borderRadius: "999px",
+                  padding: "6px 14px",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  color: "#6b4a3f",
+                  background: "rgba(255,255,255,0.8)",
+                  border: "1px solid #e7c7b6",
+                  boxShadow: "0 2px 6px rgba(181,125,105,0.15)",
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                }}
+              >
+                Mon profil
+              </button>
 
-            {/* Déconnexion */}
-            <button
-              onClick={async () => {
-                await supabase.auth.signOut();
-                router.refresh(); // rafraîchit le header après logout
-              }}
-              style={{
-                textDecoration: "none",
-                borderRadius: "999px",
-                padding: "6px 14px",
-                fontSize: "14px",
-                fontWeight: 500,
-                color: "#fff",
-                background: "#b57d69",
-                boxShadow: "0 4px 12px rgba(181,125,105,0.25)",
-                transition: "all 0.3s ease",
-                cursor: "pointer",
-              }}
-            >
-              Déconnexion
-            </button>
-          </>
-        ) : (
-          <>
-            {/* Se connecter */}
-            <Link
-              href="/login"
-              style={{
-                textDecoration: "none",
-                borderRadius: "999px",
-                padding: "6px 14px",
-                fontSize: "14px",
-                fontWeight: 500,
-                color: "#6b4a3f",
-                background: "rgba(255,255,255,0.8)",
-                border: "1px solid #e7c7b6",
-                boxShadow: "0 2px 6px rgba(181,125,105,0.15)",
-                transition: "all 0.3s ease",
-              }}
-            >
-              Se connecter
-            </Link>
-
-            {/* Créer un compte */}
-            <Link
-              href="/signup"
-              style={{
-                textDecoration: "none",
-                borderRadius: "999px",
-                padding: "6px 14px",
-                fontSize: "14px",
-                fontWeight: 500,
-                color: "#fff",
-                background: "#b57d69",
-                boxShadow: "0 4px 12px rgba(181,125,105,0.25)",
-                transition: "all 0.3s ease",
-              }}
-            >
-              Créer un compte
-            </Link>
-          </>
+              <button
+                onClick={async () => {
+                  await supabase.auth.signOut();
+                  router.replace("/"); // redirection vers l'accueil
+                }}
+                style={{
+                  textDecoration: "none",
+                  borderRadius: "999px",
+                  padding: "6px 14px",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  color: "#fff",
+                  background: "#b57d69",
+                  boxShadow: "0 4px 12px rgba(181,125,105,0.25)",
+                  transition: "all 0.3s ease",
+                  cursor: "pointer",
+                }}
+              >
+                Déconnexion
+              </button>
+            </>
+          ) : (
+            <>
+              <Link
+                href="/login"
+                style={{
+                  textDecoration: "none",
+                  borderRadius: "999px",
+                  padding: "6px 14px",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  color: "#6b4a3f",
+                  background: "rgba(255,255,255,0.8)",
+                  border: "1px solid #e7c7b6",
+                  boxShadow: "0 2px 6px rgba(181,125,105,0.15)",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                Se connecter
+              </Link>
+              <Link
+                href="/signup"
+                style={{
+                  textDecoration: "none",
+                  borderRadius: "999px",
+                  padding: "6px 14px",
+                  fontSize: "14px",
+                  fontWeight: 500,
+                  color: "#fff",
+                  background: "#b57d69",
+                  boxShadow: "0 4px 12px rgba(181,125,105,0.25)",
+                  transition: "all 0.3s ease",
+                }}
+              >
+                Créer un compte
+              </Link>
+            </>
+          )
         )}
       </div>
 

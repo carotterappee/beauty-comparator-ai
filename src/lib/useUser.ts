@@ -8,13 +8,13 @@ export function useUser() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Récupération utilisateur courant
-    supabase.auth.getUser().then(({ data }) => {
-      setUser(data.user ?? null);
+    // 1) Récupère la session courante (plus fiable que getUser au 1er render)
+    supabase.auth.getSession().then(({ data }) => {
+      setUser(data.session?.user ?? null);
       setLoading(false);
     });
 
-    // Écoute des changements de session
+    // 2) Écoute tous les changements d’auth (login, logout, refresh)
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((_event, session) => {
