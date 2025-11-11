@@ -11,25 +11,25 @@ export default function Home() {
       <section className="relative -mt-6 md:-mt-8 z-20">
         <div className="mx-auto max-w-5xl px-4">
           <nav className="rounded-2xl bg-white/85 backdrop-blur-xl ring-1 ring-[#e8cfc3] shadow-[0_10px_28px_rgba(181,125,105,0.12)] px-4 md:px-6 py-3">
-            <ul className="flex flex-wrap items-center justify-center gap-3 md:gap-6">
-              {[
-                { label: "Accueil", href: "/" },
-                { label: "Tendances", href: "/tendances" },
-                { label: "Comparateur", href: "/comparateur" },
-                { label: "Profil beauté", href: "/profil beauté" },
-                { label: "A propos", href: "/à propos" },
-                { label: "Nous contacter", href: "/nous contacter" },
-              ].map((item) => (
-                <li key={item.label}>
-                  <Link
-                    href={item.href}
-                    className="no-underline text-[#5b3e37] hover:text-[#b57d69] text-sm md:text-base font-medium px-3 py-1.5 rounded-full hover:bg-[#fff] hover:ring-1 hover:ring-[#e7c7b6] transition"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <ul className="list-none flex flex-row flex-wrap items-center justify-center space-x-8 md:space-x-12">
+  {[
+    { label: "Accueil", href: "/" },
+    { label: "Tendances", href: "/tendances" },
+    { label: "Comparateur", href: "/comparateur" },
+    { label: "Profil beauté", href: "/profil beauté" },
+    { label: "A propos", href: "/à propos" },
+    { label: "Nous contacter", href: "/nous contacter" },
+  ].map((item) => (
+    <li key={item.label}>
+      <Link
+        href={item.href}
+        className="no-underline text-[#5b3e37] hover:text-[#b57d69] text-sm md:text-base font-medium px-2 py-1.5 rounded-full hover:bg-[#fff] hover:ring-1 hover:ring-[#e7c7b6] transition"
+      >
+        {item.label}
+      </Link>
+    </li>
+  ))}
+</ul>
           </nav>
         </div>
       </section>
