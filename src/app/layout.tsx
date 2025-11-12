@@ -1,14 +1,17 @@
 import "./globals.css";
 import Header from "@/components/header";
 import Footer from "@/components/Footer";
+import { AuthProvider } from "@/lib/AuthProvider";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <body>
-        <Header />
-        {children}
-        <Footer />  {/* ← ajout ici */}
+        <AuthProvider>
+          <Header />
+          {children}
+          <Footer />
+        </AuthProvider>
       </body>
     </html>
   );
