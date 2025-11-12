@@ -1,4 +1,4 @@
-// src/app/api/news-hub/route.ts
+
 import { NextResponse } from "next/server";
 import Parser from "rss-parser";
 
@@ -141,7 +141,7 @@ function normalize(item: FeedItem, source: string, seedCat: Category): News {
   };
 }
 
-export const revalidate = 60 * 10; // 10 minutes
+export const revalidate = 600; // 10 minutes
 
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
